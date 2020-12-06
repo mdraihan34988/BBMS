@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EE93A1E-0B07-4476-8B1E-8D407102352D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BloodBankSystem</RootNamespace>
+    <AssemblyName>BloodBankSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Raihan\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BloodDonorController.cs" />
+    <Compile Include="Controllers\BloodStockController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Models\BloodDonor.cs" />
+    <Compile Include="Models\BloodDonors.cs" />
+    <Compile Include="Models\BloodStock.cs" />
+    <Compile Include="Models\BloodStocks.cs" />
+    <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberInfo.cs" />
+    <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\Requests.cs" />
+    <Compile Include="Models\SearchMember.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Views\Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BloodDonate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BloodDonate.Designer.cs">
+      <DependentUpon>BloodDonate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BloodReqNon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BloodReqNon.Designer.cs">
+      <DependentUpon>BloodReqNon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BloodRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BloodRequest.Designer.cs">
+      <DependentUpon>BloodRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blood_Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Blood_Stock.Designer.cs">
+      <DependentUpon>Blood_Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditInformation.Designer.cs">
+      <DependentUpon>EditInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MemberHistory.Designer.cs">
+      <DependentUpon>MemberHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MemberInfo.Designer.cs">
+      <DependentUpon>MemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PasswordRecover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PasswordRecover.Designer.cs">
+      <DependentUpon>PasswordRecover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisteredMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RegisteredMember.Designer.cs">
+      <DependentUpon>RegisteredMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HomePage.Designer.cs">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchDoner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SearchDoner.Designer.cs">
+      <DependentUpon>SearchDoner.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BloodDonate.resx">
+      <DependentUpon>BloodDonate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BloodReqNon.resx">
+      <DependentUpon>BloodReqNon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BloodRequest.resx">
+      <DependentUpon>BloodRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Blood_Stock.resx">
+      <DependentUpon>Blood_Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditInformation.resx">
+      <DependentUpon>EditInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberHistory.resx">
+      <DependentUpon>MemberHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberInfo.resx">
+      <DependentUpon>MemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PasswordRecover.resx">
+      <DependentUpon>PasswordRecover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RegisteredMember.resx">
+      <DependentUpon>RegisteredMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomePage.resx">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchDoner.resx">
+      <DependentUpon>SearchDoner.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c#.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c1 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-welcome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c3 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d3 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\l1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\m1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\L11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s1 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s1 %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-icon12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Go-back-icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\l2222222222222.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\l2222222222222 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User-Interface-Logout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-Dialog-Logout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotating-arrow-to-the-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
