@@ -76,7 +76,7 @@ namespace BloodBankSystem.Views
                     PdfWriter.GetInstance(doc, new FileStream("D:/"+username+".pdf", FileMode.Create));
                     doc.Open();
                     Paragraph p = new Paragraph("Reciet  \n" + "\n" +
-                        "User Type: Unregistered \n" +
+                        "User Type: Registered \n" +
                         "Username: "+ username+ "\n" +
                         "Blood Group: " + bloodgroup + "\n" +
                         "Quantity: " + quantity + "\n" +

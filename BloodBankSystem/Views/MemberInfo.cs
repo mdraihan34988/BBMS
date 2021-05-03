@@ -50,36 +50,116 @@ namespace BloodBankSystem.Views
 
         private void buttonPDF_Click(object sender, EventArgs e)
         {
-            Document doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream("D:/ExportPDF.pdf", FileMode.Create));
-            doc.Open();
-            Paragraph p = new Paragraph(" \t\t\t  Report  " +
-                "\n" +
-                "\n" +
-                "\n");
-            doc.Add(p);
-            PdfPTable pt = new PdfPTable(dataGridViewMember.Columns.Count);
-            for (int j = 0; j < dataGridViewMember.Columns.Count; j++)
+            //Document doc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+           
+            //PdfWriter.GetInstance(doc, new FileStream("D:/ExportPDF.pdf", FileMode.Create));
+            //doc.Open();
+            //Paragraph p = new Paragraph(" \t\t\t  Report  " +
+            //    "\n" +
+            //    "\n" +
+            //    "\n");
+            //doc.Add(p);
+            //PdfPTable pt = new PdfPTable(dataGridViewMember.Columns.Count);
+            //pt.DefaultCell.Padding = 1;
+            //pt.WidthPercentage = 100;
+            //pt.HorizontalAlignment = Element.ALIGN_LEFT;
+            //for (int j = 0; j < dataGridViewMember.Columns.Count; j++)
+            //{
+            //    pt.AddCell(new Phrase(dataGridViewMember.Columns[j].HeaderText));
+            //}
+            
+            //pt.HeaderRows = 1;
+
+
+            //for (int l = 0; l < dataGridViewMember.Rows.Count; l++)
+            //{
+            //    for (int k = 0; k < dataGridViewMember.Columns.Count; k++)
+            //    {
+            //        pt.AddCell(new Phrase(dataGridViewMember[k, l].Value.ToString()));
+
+            //    }
+            //}
+            //doc.Add(pt);
+            //doc.Close();
+
+            //MessageBox.Show("Export Pdf Successfully!", "Success");
+            //--------------------------------------------------------------
+
+
+            if (dataGridViewMember.Rows.Count > 0)
             {
-                pt.AddCell(new Phrase(dataGridViewMember.Columns[j].HeaderText));
-            }
-
-            pt.HeaderRows = 1;
-
-
-            for (int l = 0; l < dataGridViewMember.Rows.Count; l++)
-            {
-                for (int k = 0; k < dataGridViewMember.Columns.Count; k++)
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Output.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    pt.AddCell(new Phrase(dataGridViewMember[k, l].Value.ToString()));
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridViewMember.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
 
+                            foreach (DataGridViewColumn column in dataGridViewMember.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in dataGridViewMember.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(cell.Value.ToString());
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                
+                                Paragraph p = new Paragraph(" \t\t\t  Report  " +
+                                    "\n" +
+                                    "\n" +
+                                    "\n");
+                                pdfDoc.Add(p);
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
                 }
             }
-            doc.Add(pt);
-            doc.Close();
-
-            MessageBox.Show("Export Pdf Successfully!", "Success");
-        }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        
+    }
 
         private void ManageClickEvent(object sender, EventArgs e)
         {
